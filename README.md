@@ -4,6 +4,11 @@
 ## Project Structure
 
 ## Add Integrations and deployment
+```bash
+npm i lit
+npm i lit-html
+npm install eslint-plugin-lit --save-dev
+```
 
 ## Development
 
