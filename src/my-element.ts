@@ -1,25 +1,9 @@
 import { LitElement, css, html } from 'lit'
-import { customElement, property } from 'lit/decorators.js'
+import { customElement } from 'lit/decorators.js'
+import { articles } from './utils/articles'
 
-/**
- * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
- */
 @customElement('my-element')
 export class MyElement extends LitElement {
-  /**
-   * Copy for the read the docs hint.
-   */
-  @property()
-  docsHint = 'Click on the Vite and Lit logos to learn more'
-
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
-  count = 0
 
   render() {
     return html`
@@ -29,6 +13,10 @@ export class MyElement extends LitElement {
         </section>
         <section id="experience">
           <h2>Experience</h2>
+        </section>
+        <section id="article">
+          <h2>Top 20 Articles</h2>
+          ${articles()}
         </section>
         <footer>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"></link>
@@ -40,10 +28,6 @@ export class MyElement extends LitElement {
         </footer>
       </div>
     `
-  }
-
-  private _onClick() {
-    this.count++
   }
 
   static styles = css`
@@ -67,11 +51,6 @@ export class MyElement extends LitElement {
     .logo.lit:hover {
       filter: drop-shadow(0 0 2em #325cffaa);
     }
-/*
-    .card {
-      padding: 2em;
-    }
-*/
     .read-the-docs {
       color: #888;
     }
@@ -82,12 +61,12 @@ export class MyElement extends LitElement {
     }
 
     a {
-      font-weight: 500;
-      color: #646cff;
-      text-decoration: inherit;
+      color: #0077cc;
+      text-decoration: none;
     }
+
     a:hover {
-      color: #535bf2;
+      text-decoration: underline;
     }
 
     button {
@@ -101,9 +80,11 @@ export class MyElement extends LitElement {
       cursor: pointer;
       transition: border-color 0.25s;
     }
+
     button:hover {
       border-color: #646cff;
     }
+
     button:focus,
     button:focus-visible {
       outline: 4px auto -webkit-focus-ring-color;
@@ -148,6 +129,31 @@ export class MyElement extends LitElement {
   
     .social-links a:hover {
         color: #0077cc;
+    }
+
+    #intro {
+      background-color: #333;
+      color: #fff;
+    }
+
+    #articles {
+      background-color: #ddd;
+    }
+
+    h1, h2 {
+      margin: 0 0 20px;
+      border-bottom: 2px solid #333;
+    }
+    /** host is my-element tag style */
+    :host {
+      width: 100%
+    }
+    ul li {
+      margin-bottom: 0px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
   `
 }
